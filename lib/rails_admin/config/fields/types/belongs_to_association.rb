@@ -10,7 +10,7 @@ module RailsAdmin
 
           # Accessor for field's formatted value
           register_instance_option :formatted_value do
-            (o = value) && (!o.empty?) && o.send(associated_model_config.object_label_method)
+            (o = value) && (!o.respond_to?(associated_model_config.object_label_method)) && o.send(associated_model_config.object_label_method)
           end
 
           register_instance_option :sortable do
